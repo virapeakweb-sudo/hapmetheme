@@ -1,0 +1,335 @@
+/*
+Theme Name: Hapomeo
+Theme URI: http://example.com/hapomeo
+Author: Your Name
+Author URI: http://example.com
+Description: قالب اختصاصی هاپومیو تبدیل شده از HTML
+Version: 1.7
+Text Domain: hapomeo
+*/
+
+/* Path: wp-content/themes/hapomeo/style.css
+توضیحات: این فایل شناسه اصلی قالب شماست. فونت‌های شما را هم اینجا نگه می‌داریم.
+*/
+@font-face {
+    font-family: 'IRANSansXV';
+    src: url('https://hapoomeo.com/wp-content/themes/hapmetheme/fonts/IRANSansXV.woff2') format('woff2'),
+        url('https://hapoomeo.com/wp-content/themes/hapmetheme/fonts/IRANSansXV.woff') format('woff');
+    font-weight: 100 900;
+    /* تنظیم برای واریبل فونت */
+    font-style: normal;
+    font-display: swap;
+    /* برای بهبود سرعت نمایش متن */
+}
+@font-face {
+    font-family: 'Yekanbakh';
+    src: url('https://hapoomeo.com/wp-content/themes/hapmetheme/fonts/IRANSansXV.woff2') format('woff2'),
+        url('https://hapoomeo.com/wp-content/themes/hapmetheme/fonts/IRANSansXV.woff') format('woff');
+    font-weight: 100 900;
+    /* تنظیم برای واریبل فونت */
+    font-style: normal;
+    font-display: swap;
+    /* برای بهبود سرعت نمایش متن */
+}
+/* استایل‌های پایه اگر نیاز باشد اینجا اضافه می‌شوند */
+body {
+    font-family: 'IRANSansXV','Yekanbakh', sans-serif;
+}
+
+
+/* ... (کدهای قبلی فونت‌ها و ...) ...
+*/
+
+/* استایل اسکرول‌بار اختصاصی (طبق فایل cart.html) */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* رفع تداخل استایل‌های پیش‌فرض ووکامرس */
+.woocommerce-cart-form input[type="number"] {
+    -moz-appearance: textfield;
+    /* حذف فلش‌های پیش‌فرض فایرفاکس */
+}
+
+.woocommerce-cart-form input[type="number"]::-webkit-outer-spin-button,
+.woocommerce-cart-form input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    /* حذف فلش‌های پیش‌فرض کروم/سافاری */
+    margin: 0;
+}
+
+/* استایل دکمه‌های +/- */
+.quantity button:focus {
+    outline: none;
+}
+
+/* پنهان کردن هدر جدول پیش‌فرض ووکامرس اگر هنوز لود می‌شود */
+.shop_table thead {
+    display: none;
+}
+
+.shop_table {
+    border: none !important;
+}
+
+.shop_table td {
+    border: none !important;
+    padding: 0 !important;
+}
+
+/* ... کدهای قبلی ... */
+
+/* مخفی کردن جدول محصولات پیش‌فرض ووکامرس در صفحه تسویه حساب */
+/* چون ما لیست سفارشی خودمان را در سایدبار داریم */
+.woocommerce-checkout-review-order-table thead,
+.woocommerce-checkout-review-order-table tbody {
+    display: none;
+}
+
+/* نمایش فوتر جدول (جمع کل و حمل و نقل) */
+.woocommerce-checkout-review-order-table tfoot {
+    display: table-footer-group;
+}
+
+.woocommerce-checkout-review-order-table th,
+.woocommerce-checkout-review-order-table td {
+    padding: 10px 0;
+    border-top: 1px solid #f1f5f9; /* slate-100 */
+    color: #64748b; /* slate-500 */
+    font-size: 0.875rem;
+}
+
+.woocommerce-checkout-review-order-table .order-total th,
+.woocommerce-checkout-review-order-table .order-total td {
+    border-top: 2px solid #fdba74; /* orange-300 */
+    padding-top: 15px;
+    color: #1e293b; /* slate-800 */
+    font-weight: 800;
+    font-size: 1.1rem;
+}
+.woocommerce-checkout-review-order-table .order-total td strong {
+    color: #ea580c; /* orange-600 */
+}
+
+/* * FIX: WooCommerce Checkout AJAX Errors - TOAST STYLE (FIXED TOP)
+ * مسیر فایل: themes/your-theme/style.css
+ * این استایل ارورها را به صورت شناور در بالای صفحه نمایش می‌دهد
+ */
+
+/* 1. کانتینر اصلی ارورها - تبدیل به حالت شناور (Fixed) */
+.woocommerce-NoticeGroup {
+    position: fixed !important;
+    top: 30px !important;
+    /* فاصله از بالای صفحه */
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 999999 !important;
+    /* نمایش روی تمام عناصر حتی هدر */
+    width: auto !important;
+    max-width: 90vw !important;
+    /* در موبایل کل عرض را نگیرد */
+    min-width: 320px !important;
+    /* حداقل عرض */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    pointer-events: none !important;
+    /* امکان کلیک روی عناصر زیرین در فضاهای خالی */
+}
+
+/* 2. استایل دهی به باکس ارور و سایر پیام‌ها */
+ul.woocommerce-error,
+.woocommerce-info,
+.woocommerce-message {
+    pointer-events: auto !important;
+    /* فعال کردن کلیک روی خود پیام */
+    width: 100% !important;
+    box-sizing: border-box !important;
+    margin-bottom: 10px !important;
+
+    /* سایه قوی برای جدا شدن از پس‌زمینه چون روی محتواست */
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
+    animation: slideDownFade 0.4s ease-out !important;
+    /* انیمیشن ورود */
+}
+
+/* انیمیشن برای ظاهر شدن نرم از بالا */
+@keyframes slideDownFade {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 3. استایل لیست ارور (قرمز) */
+ul.woocommerce-error {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+
+    background-color: #FEF2F2 !important;
+    /* زمینه سفید مایل به قرمز */
+    border: 1px solid #FECACA !important;
+    border-right: 4px solid #EF4444 !important;
+    /* خط رنگی سمت راست */
+
+    padding: 16px 20px !important;
+    border-radius: 12px !important;
+    list-style: none !important;
+}
+
+/* 4. استایل هر خط ارور - اصلاح شده برای جلوگیری از تداخل آیکون */
+ul.woocommerce-error li {
+    position: relative !important;
+    /* مرجع برای آیکون مطلق */
+    display: block !important;
+    padding-right: 30px !important;
+    /* فضای خالی سمت راست برای آیکون */
+    padding-left: 0 !important;
+    width: 100% !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    color: #991B1B !important;
+    line-height: 1.6 !important;
+    margin: 0 !important;
+}
+
+/* آیکون هشدار - اصلاح شده با پوزیشن مطلق */
+ul.woocommerce-error li::before {
+    content: "\f071";
+    font-family: "Font Awesome 6 Free", "FontAwesome" !important;
+    font-weight: 900;
+
+    /* تنظیم موقعیت آیکون به صورت مطلق */
+    position: absolute !important;
+    right: 0 !important;
+    top: 3px !important;
+    /* تنظیم دقیق ارتفاع */
+
+    font-size: 18px;
+    color: #EF4444;
+    margin: 0 !important;
+}
+
+/* مخفی کردن آیکون‌های پیش‌فرض */
+.woocommerce-error::before,
+.woocommerce-error::after {
+    display: none !important;
+}
+
+/* 5. استایل پیام‌های آبی (Info) */
+.woocommerce-info {
+    background-color: #EFF6FF !important;
+    border: 1px solid #BFDBFE !important;
+    border-right: 4px solid #3B82F6 !important;
+    color: #1E40AF !important;
+    padding: 16px !important;
+    border-radius: 12px !important;
+    display: flex !important;
+    align-items: center;
+    list-style: none !important;
+}
+
+/* دکمه‌های داخل پیام‌ها */
+.woocommerce-error .button,
+.woocommerce-info .button,
+.woocommerce-message .button {
+    background: #fff !important;
+    border: 1px solid currentColor !important;
+    padding: 4px 12px !important;
+    border-radius: 6px !important;
+    margin-right: auto !important;
+    font-size: 12px !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+}
+
+
+
+@media screen and (min-width: 1024px) {
+
+    .woocommerce-error,
+    .woocommerce-info,
+    .woocommerce-message {
+        padding-right: 68px!important;
+        padding-top: 22px!important;
+    }
+}
+.logoh {width: 180px;}
+
+.woocommerce-account .woocommerce-MyAccount-navigation {
+    float: right;
+    width: 100%!important;
+}
+
+.woocommerce-account .woocommerce-MyAccount-content {
+    float: left;
+    width:100%!important;
+}
+
+
+
+@layer base {
+    .entry-content table {
+        @apply w-full border-collapse text-right my-6 overflow-hidden rounded-lg;
+        direction: rtl;
+    }
+
+    .entry-content thead {
+        @apply bg-gray-100 text-gray-700 font-bold;
+    }
+
+    .entry-content th,
+    .entry-content td {
+        @apply p-4 border-b border-gray-200 text-sm;
+    }
+
+    /* استایل یکی در میان (Zebra) */
+    .entry-content tr:nth-child(even) {
+        @apply bg-gray-50;
+    }
+
+    /* حالت هاور برای سطرها */
+    .entry-content tr:hover {
+        @apply bg-blue-50 transition-colors duration-200;
+    }
+}
+
+/* ایجاد اسکرول افقی برای جداول بزرگ در موبایل */
+.entry-content {
+    @apply overflow-x-auto;
+}
+
+.entry-content table {
+    @apply min-w-full;
+    /* جلوگیری از فشرده شدن بیش از حد ستون‌ها */
+}
+
+
+.text-blue-500 {
+    --tw-text-opacity: 1;
+    color: rgb(81 146 148)!important;
+}
+
+.hover\:text-blue-500:hover {
+    --tw-text-opacity: 1;
+    color: rgb(81 146 148)!important;
+}
